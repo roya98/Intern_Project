@@ -5,3 +5,8 @@ Feature: Search Result
   Scenario: Correct Search Results for Cure
     Given Open Search Result for Cure
     Then Verify 23 results
+
+
+  Scenario: Search results UI for CURE is correct
+    Given Open Search Result for Cure
+    Then Verify first results have name, image, and price
