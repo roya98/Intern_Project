@@ -3,6 +3,8 @@ from behave import given, when, then
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
+# $x("//a[@class='header__heading-link link link--text focus-inset']")
+# $$("#healthytext")
 
 
 
@@ -10,6 +12,10 @@ from time import sleep
 def open_cure_page(context):
     context.app.cure_page.open_url('/search?q=cure')
 
+
+@when('Click on CureSkin logo in the header')
+def click_on_logo(context):
+    context.app.cure_page.click_on_logo()
 
 
 
@@ -25,6 +31,10 @@ def verify_cure_results(context):
 @then('Verify first results have name, image, and price')
 def verify_infor_img(context):
     context.app.cure_page.verify_infor_img()
+
+
+
+
 
 
 

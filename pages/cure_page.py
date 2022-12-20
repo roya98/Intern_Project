@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import Page
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 class Cure(Page):
@@ -12,6 +13,7 @@ class Cure(Page):
     FIRST_CURE_TEXT = (By.XPATH,"//a[contains(text(), 'CureSkin Under Eye Gel')]")
     # $x("//span[@class='price-item price-item--sale price-item--last' and contains(text(), 'Rs. 450.00')]")
     FIRST_CURE_PRICE = (By.XPATH, "//span[@class='price-item price-item--sale price-item--last' and contains(text(), 'Rs. 450.00')]")
+    LOGO = (By.XPATH, "//a[@class='header__heading-link link link--text focus-inset']")
 
     def verify_cure_results(self):
         self.find_element(*self.CURE_RESULT)
@@ -22,3 +24,6 @@ class Cure(Page):
         self.find_element(*self.FIRST_CURE_TEXT)
         length_links = len(self.driver.find_elements(*self.FIRST_CURE_PRICE))
         assert length_links, f'Expected 3 but got {length_links}'
+
+    def click_on_logo(self):
+        self.driver.wait.until(EC.element_to_be_clickable(self.LOGO)).click()

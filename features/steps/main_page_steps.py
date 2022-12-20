@@ -5,6 +5,7 @@ from time import sleep
 
 
 # $x("//*[@class='modal__toggle-open icon icon-search']")
+HEALTHY = (By.ID, 'healthytext')
 
 
 @given('Open main page')
@@ -23,4 +24,6 @@ def verify_open_search(context):
 
 
 
-
+@then('Verify user is taken to the main page')
+def verify_main(context):
+    context.driver.find_element(*HEALTHY)
